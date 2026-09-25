@@ -50,10 +50,11 @@ app = FastAPI(
     version="1.1.0",
     description="Plain-language legal document assistant for tenants, gig workers and first-job employees in India.",
 )
-app.add_middleware(GZipMiddleware, minimum_size=1024)
+app.add_middleware(GZipMiddleware, minimum_size=512)
 
 _hits: dict[str, deque] = defaultdict(deque)
 _cache: OrderedDict[str, dict] = OrderedDict()
+_LAST_CLEANUP = time.monotonic()
 
 
 def _client_ip(request: Request) -> str:
@@ -65,8 +66,10 @@ def _client_ip(request: Request) -> str:
 @app.middleware("http")
 async def guard(request: Request, call_next):
     """Per-IP sliding-window rate limit on the API plus security headers on every response."""
+    global _LAST_CLEANUP
     if request.url.path.startswith("/api/") and request.method == "POST":
-        now, q = time.monotonic(), _hits[_client_ip(request)]
+        now, ip = time.monotonic(), _client_ip(request)
+        q = _hits[ip]
         while q and now - q[0] > 60:
             q.popleft()
         if len(q) >= RATE_LIMIT:
@@ -76,18 +79,32 @@ async def guard(request: Request, call_next):
                 headers={"Retry-After": "60"},
             )
         q.append(now)
+
+        # Periodic memory cleanup for stale IP tracking entries
+        if now - _LAST_CLEANUP > 300:
+            stale_ips = [k for k, dq in _hits.items() if not dq or now - dq[-1] > 60]
+            for k in stale_ips:
+                del _hits[k]
+            _LAST_CLEANUP = now
+
     resp = await call_next(request)
     resp.headers.update(
         {
             "Content-Security-Policy": CSP,
             "X-Content-Type-Options": "nosniff",
             "X-Frame-Options": "DENY",
-            "Referrer-Policy": "no-referrer",
-            "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
-            "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+            "Referrer-Policy": "strict-origin-when-cross-origin",
+            "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+            "Cross-Origin-Opener-Policy": "same-origin",
+            "Cross-Origin-Resource-Policy": "same-origin",
+            "X-Permitted-Cross-Domain-Policies": "none",
         }
     )
-    resp.headers["Cache-Control"] = "no-store" if request.url.path.startswith("/api") else "public, max-age=300"
+    if request.url.path.startswith("/api"):
+        resp.headers["Cache-Control"] = "no-store"
+    else:
+        resp.headers["Cache-Control"] = "public, max-age=86400, stale-while-revalidate=3600"
     return resp
 
 

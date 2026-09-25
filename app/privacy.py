@@ -14,6 +14,13 @@ _PATTERNS: list[tuple[str, re.Pattern]] = [
     ("IFSC", re.compile(r"\b[A-Z]{4}0[A-Z0-9]{6}\b")),
     ("EMAIL", re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.-]+\b")),
     ("PHONE", re.compile(r"(?:\+91[\s-]?|\b0)?\b[6-9]\d{4}[\s-]?\d{5}\b")),
+    ("UPI", re.compile(r"\b[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}\b(?!\.\w)")),
+    (
+        "CARD",
+        re.compile(r"\b(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9]{2})[0-9]{12}|3[47][0-9]{13})\b"),
+    ),
+    ("PASSPORT", re.compile(r"\b[A-PR-WYa-pr-wy][1-9]\d\s?\d{4}[1-9]\b")),
+    ("VOTER_ID", re.compile(r"\b[A-Z]{3}[0-9]{7}\b")),
     ("ACCOUNT", re.compile(r"(?i)(?:a/c|account)\s*(?:no\.?|number)?\s*[:#-]?\s*\d{9,18}")),
 ]
 
