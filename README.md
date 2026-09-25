@@ -30,7 +30,7 @@ Lawyers are expensive, and generic chatbots are unreliable here: they hallucinat
 |---|---|
 | **Rules first, AI second** | A curated **Fairness Benchmark** of India-specific checks (Model Tenancy Act 2021, Indian Contract Act ss.27/28/74, Code on Social Security 2020, Arbitration Act s.12(5) and the *CORE* (2024) Constitution Bench ruling, DPDP Act 2023…) runs before any model call. Every legal reference shown comes from this reviewed list, never from the model. |
 | **Evidence-locked AI** | Gemini can add flags only if it quotes the clause **verbatim**. The server checks each quote against the document and discards any that don't match. Answers must cite clause ids that were actually retrieved, and citations the model invents are rejected. The UI shows how many AI claims were thrown away. |
-| **Privacy by design** | Aadhaar, PAN, phone, email, IFSC and account numbers are masked **before** any AI call. Documents are processed in memory and never stored. Feedback is anonymous. |
+| **Privacy by design** | Aadhaar, PAN, phone, email, IFSC, bank accounts, UPI IDs, payment cards, passport and voter IDs are masked **before** any AI call. Documents are processed in memory and never stored. Feedback is anonymous. |
 | **Works offline** | With no API key, every feature still works through the rules engine, including Hindi, so a demo never goes dark. |
 | **Built for real users** | Hindi-first copy, 11 languages via Cloud Translation, read-aloud via Cloud Text-to-Speech, photo upload via Cloud Vision OCR, large-text mode, WCAG 2.1 AA. |
 | **Knows its limits** | Detects legal notices and deadlines and escalates to NALSA 15100, DLSA and Tele-Law. Refuses to predict outcomes ("Will I win?") and turns the question into what to ask a lawyer. |
@@ -123,8 +123,17 @@ uvicorn app.main:app --reload --port 8080
 # open http://localhost:8080 and click a sample
 ```
 
-## Deploy to Cloud Run
+## Deploy Options
 
+### Option A: Render (Backend) + Netlify (Frontend)
+1. **Backend on Render**:
+   - Create a Web Service connected to your GitHub repo (Docker runtime).
+   - Set `GEMINI_API_KEY` (from [Google AI Studio](https://aistudio.google.com/)) in environment variables.
+2. **Frontend on Netlify**:
+   - Create a new site connected to your GitHub repo.
+   - Netlify auto-detects [`netlify.toml`](./netlify.toml) (`publish = "static"`) and proxies `/api/*` requests to Render with zero CORS issues.
+
+### Option B: Deploy to Google Cloud Run
 ```bash
 gcloud services enable run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com \
   aiplatform.googleapis.com vision.googleapis.com translate.googleapis.com texttospeech.googleapis.com firestore.googleapis.com
