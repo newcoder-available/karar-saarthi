@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Karaar Saathi — Understand Your Agreement Before You Sign</title>
+  <meta name="description" content="Plain-language help with rent agreements, gig platform contracts and offer letters in India. Spot risky clauses, compare versions, and prepare questions for a lawyer.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cpath d='M9 8h11l4 4v12H9z' fill='%23fff'/%3E%3Cpath d='M12 15h9M12 19h6' stroke='%230f766e' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v18M3 9l9-6 9 6M6 14l6 6 6-6M3 9a9 9 0 0 0 18 0"/>
+          </svg>
+        </div>
+        <div>
+          <p class="brand-name">Karaar Saathi <span lang="hi">करार साथी</span></p>
+          <p class="brand-tag" data-i18n="tagline">Understand your agreement before you sign</p>
+        </div>
+      </div>
+      
+      <div class="header-controls">
+        <label for="lang" class="sr-only" data-i18n="language">Language</label>
+        <select id="lang" name="lang" aria-describedby="lang-hint"></select>
+        <span id="lang-hint" class="sr-only">Changes the language of explanations</span>
+        
+        <button type="button" id="theme-toggle" class="btn ghost icon-only" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <span id="theme-icon" aria-hidden="true">🌓</span>
+        </button>
+
+        <button type="button" id="text-size" class="btn ghost" aria-pressed="false" data-i18n="bigger">A+ Larger text</button>
+        <span id="ai-status" class="pill" role="status">…</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap" tabindex="-1">
+    <h1 class="sr-only">Karaar Saathi: understand, compare and prepare questions about your legal documents</h1>
+    
+    <div class="notice" id="disclaimer-top">
+      <span class="notice-icon" aria-hidden="true">🛡️</span>
+      <p style="margin: 0;" data-i18n="disclaimer_short">This tool explains documents in plain language. It is legal information, not legal advice. Free legal aid: call NALSA 15100.</p>
+    </div>
+
+    <!-- MAIN TABS -->
+    <div role="tablist" aria-label="Tools" class="tabs" id="tabs">
+      <button role="tab" id="tab-understand" aria-controls="panel-understand" aria-selected="true" data-i18n="tab_understand">🔍 1 · Understand</button>
+      <button role="tab" id="tab-compare" aria-controls="panel-compare" aria-selected="false" tabindex="-1" data-i18n="tab_compare">⚖️ 2 · Compare</button>
+      <button role="tab" id="tab-prep" aria-controls="panel-prep" aria-selected="false" tabindex="-1" data-i18n="tab_prep">📋 3 · Prepare for a lawyer</button>
+      <button role="tab" id="tab-about" aria-controls="panel-about" aria-selected="false" tabindex="-1" data-i18n="tab_about">ℹ️ How it works</button>
+    </div>
+
+    <!-- UNDERSTAND PANEL -->
+    <section role="tabpanel" id="panel-understand" aria-labelledby="tab-understand" class="panel">
+      
+      <!-- Persona Help Cards -->
+      <div class="hero-personas">
+        <div class="persona-card">
+          <span class="persona-icon" aria-hidden="true">🏠</span>
+          <div class="persona-info">
+            <h3>Tenants</h3>
+            <p>11-month rent agreements, deposit deductions, lock-ins & notice rules</p>
+          </div>
+        </div>
+        <div class="persona-card">
+          <span class="persona-icon" aria-hidden="true">🛵</span>
+          <div class="persona-info">
+            <h3>Gig Workers</h3>
+            <p>Delivery terms, deactivation reasons, payout cuts & arbitrary penalties</p>
+          </div>
+        </div>
+        <div class="persona-card">
+          <span class="persona-icon" aria-hidden="true">💼</span>
+          <div class="persona-info">
+            <h3>First-Job Employees</h3>
+            <p>Training bonds, notice periods, non-competes & certificate retention</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="analyse-form" class="card" novalidate>
+        <h2 class="title" data-i18n="h_upload">Check a rent agreement, gig contract or offer letter</h2>
+        <p class="muted" data-i18n="upload_help">Upload a PDF, Word file or photo, or paste the text. Aadhaar, PAN, phone numbers and emails are masked before any AI sees them, and nothing is stored.</p>
+        
+        <div class="grid-2">
+          <div class="field">
+            <label for="file" data-i18n="upload_label">Upload document</label>
+            <input type="file" id="file" name="file" accept=".pdf,.docx,.txt,.md,.png,.jpg,.jpeg,.webp" aria-describedby="file-hint">
+            <p id="file-hint" class="hint" data-i18n="file_hint">PDF, DOCX, TXT, or a clear photo. Max 5 MB.</p>
+          </div>
+          
+          <div class="field">
+            <span class="label" id="samples-label" data-i18n="try_sample">Or try a sample</span>
+            <div class="chips" id="samples" role="group" aria-labelledby="samples-label"></div>
+          </div>
+        </div>
+        
+        <div class="field">
+          <label for="text" data-i18n="paste_label">Or paste the text</label>
+          <textarea id="text" name="text" rows="8" maxlength="200000" spellcheck="false" placeholder="Paste full agreement text here..."></textarea>
+        </div>
+        
+        <div class="row between">
+          <label class="check"><input type="checkbox" id="use-ai" checked> <span data-i18n="use_ai">Use Gemini for plain-language summary</span></label>
+          <button type="submit" class="btn primary" id="analyse-btn" data-i18n="analyse">✨ Explain this document</button>
+        </div>
+        <p id="analyse-error" class="error" role="alert" hidden></p>
+      </form>
+
+      <div id="progress" class="progress" role="status" aria-live="polite" hidden></div>
+
+      <div id="results" hidden>
+        <div id="urgent" class="alert" role="alert" hidden></div>
+
+        <!-- SUMMARY CARD -->
+        <section class="card" aria-labelledby="h-summary">
+          <div class="row between">
+            <h2 id="h-summary" data-i18n="h_summary">In plain words</h2>
+            <button type="button" class="btn ghost" id="speak-summary" data-i18n="read_aloud">🔊 Read aloud</button>
+          </div>
+          <p id="doc-label" class="eyebrow"></p>
+          <p id="overview" class="lead"></p>
+          <ul id="key-points" class="bullets"></ul>
+          
+          <div class="grid-2 gap-top">
+            <div class="meter-card">
+              <h3 data-i18n="h_score" style="margin-top:0;">Fairness check</h3>
+              <div class="meter-wrap">
+                <meter id="score-meter" min="0" max="100" low="55" high="80" optimum="100" value="0" aria-describedby="score-text"></meter>
+                <p id="score-text" class="score-text"></p>
+              </div>
+              <p class="hint" data-i18n="score_hint">Based on the number and seriousness of issues found. It is a guide, not a legal opinion.</p>
+            </div>
+            
+            <div>
+              <h3 data-i18n="h_facts" style="margin-top:0;">Key terms</h3>
+              <table class="facts" id="facts"><caption class="sr-only">Key terms found in the document</caption><tbody></tbody></table>
+            </div>
+          </div>
+          <p id="mode-note" class="hint" style="margin-top: 14px;"></p>
+        </section>
+
+        <!-- FLAGS CARD -->
+        <section class="card" aria-labelledby="h-flags">
+          <h2 id="h-flags" data-i18n="h_flags">Clauses to look at closely</h2>
+          <div class="filter row" role="group" aria-label="Filter by seriousness">
+            <button type="button" class="chip" aria-pressed="true" data-sev="all" data-i18n="all">All</button>
+            <button type="button" class="chip" aria-pressed="false" data-sev="high" data-i18n="high">Serious</button>
+            <button type="button" class="chip" aria-pressed="false" data-sev="medium" data-i18n="medium">Check</button>
+            <button type="button" class="chip" aria-pressed="false" data-sev="low" data-i18n="low">Minor / info</button>
+          </div>
+          <ol id="flags" class="flags"></ol>
+          <div id="missing-wrap" class="gap-top" hidden>
+            <h3 data-i18n="h_missing">Missing from your document</h3>
+            <ul id="missing" class="bullets"></ul>
+          </div>
+        </section>
+
+        <!-- ASK Q&A CARD -->
+        <section class="card" aria-labelledby="h-ask">
+          <h2 id="h-ask" data-i18n="h_ask">Ask about your document</h2>
+          <div id="suggested" class="chips" role="group" aria-label="Suggested questions"></div>
+          <div id="chat" class="chat" aria-live="polite"></div>
+          <form id="ask-form" class="row">
+            <label for="question" class="sr-only" data-i18n="your_question">Your question</label>
+            <input id="question" type="text" maxlength="500" autocomplete="off" data-i18n-placeholder="ask_ph" placeholder="e.g. Can I leave before 11 months?">
+            <button type="submit" class="btn primary" data-i18n="ask">Ask</button>
+          </form>
+        </section>
+
+        <!-- FULL CLAUSES CARD -->
+        <section class="card" aria-labelledby="h-clauses">
+          <details>
+            <summary><h2 id="h-clauses" class="inline" data-i18n="h_clauses">Full document, clause by clause</h2></summary>
+            <p id="redaction-note" class="hint" style="margin: 10px 0;"></p>
+            <ol id="clauses" class="clauses"></ol>
+          </details>
+        </section>
+
+        <!-- FEEDBACK CARD -->
+        <section class="card row between" aria-labelledby="h-feedback">
+          <h2 id="h-feedback" class="small" data-i18n="h_feedback">Was this helpful?</h2>
+          <div class="row">
+            <button type="button" class="btn ghost" data-helpful="true" data-i18n="yes">👍 Yes</button>
+            <button type="button" class="btn ghost" data-helpful="false" data-i18n="no">👎 No</button>
+            <span id="feedback-status" role="status" style="font-weight: 600; color: var(--good);"></span>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- COMPARE PANEL -->
+    <section role="tabpanel" id="panel-compare" aria-labelledby="tab-compare" class="panel" hidden>
+      <form id="compare-form" class="card" novalidate>
+        <h2 data-i18n="h_compare">Compare two versions</h2>
+        <p class="muted" data-i18n="compare_help">E.g. the landlord's draft vs. the revised one, or two job offers. We show what got better, what got worse, and what is still worth negotiating.</p>
+        <div class="grid-2">
+          <fieldset>
+            <legend data-i18n="doc_a">Document A (original)</legend>
+            <label for="file-a" class="sr-only">Upload document A</label>
+            <input type="file" id="file-a" accept=".pdf,.docx,.txt,.md,.png,.jpg,.jpeg,.webp">
+            <label for="text-a" class="label" data-i18n="or_paste" style="margin-top:10px;">or paste text</label>
+            <textarea id="text-a" rows="7" maxlength="200000" placeholder="Paste Document A text..."></textarea>
+          </fieldset>
+          <fieldset>
+            <legend data-i18n="doc_b">Document B (revised / alternative)</legend>
+            <label for="file-b" class="sr-only">Upload document B</label>
+            <input type="file" id="file-b" accept=".pdf,.docx,.txt,.md,.png,.jpg,.jpeg,.webp">
+            <label for="text-b" class="label" data-i18n="or_paste" style="margin-top:10px;">or paste text</label>
+            <textarea id="text-b" rows="7" maxlength="200000" placeholder="Paste Document B text..."></textarea>
+          </fieldset>
+        </div>
+        <div class="row between" style="margin-top: 14px;">
+          <button type="button" class="btn ghost" id="compare-sample" data-i18n="compare_sample">Load sample: draft vs revised rent agreement</button>
+          <button type="submit" class="btn primary" data-i18n="compare">⚖️ Compare</button>
+        </div>
+        <p id="compare-error" class="error" role="alert" hidden></p>
+      </form>
+      
+      <div id="compare-progress" class="progress" role="status" aria-live="polite" hidden></div>
+      
+      <div id="compare-results" hidden>
+        <section class="card" aria-labelledby="h-cmp-sum">
+          <h2 id="h-cmp-sum" data-i18n="h_cmp_sum">What changed</h2>
+          <p id="cmp-summary" class="lead"></p>
+          <div class="scores" id="cmp-scores"></div>
+          <table class="facts compare-table" id="cmp-facts">
+            <caption class="sr-only">Key terms in both documents</caption>
+            <thead><tr><th scope="col" data-i18n="term">Term</th><th scope="col">A</th><th scope="col">B</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </section>
+        <div class="grid-3">
+          <section class="card good" aria-labelledby="h-fixed"><h3 id="h-fixed" data-i18n="fixed">✓ Fixed in B</h3><ul id="cmp-fixed" class="bullets"></ul></section>
+          <section class="card bad" aria-labelledby="h-new"><h3 id="h-new" data-i18n="new_risk">✗ New in B</h3><ul id="cmp-new" class="bullets"></ul></section>
+          <section class="card warn" aria-labelledby="h-both"><h3 id="h-both" data-i18n="still">! Still in both</h3><ul id="cmp-both" class="bullets"></ul></section>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREP PANEL -->
+    <section role="tabpanel" id="panel-prep" aria-labelledby="tab-prep" class="panel" hidden>
+      <div class="card">
+        <h2 data-i18n="h_prep">Lawyer prep pack</h2>
+        <p class="muted" data-i18n="prep_help">A one-page brief to take to a lawyer or free legal aid: your situation, the risky clauses, questions to ask, documents to carry, your options, and a message to request changes.</p>
+        <p id="prep-empty" class="hint" data-i18n="prep_empty">First explain a document in step 1.</p>
+        <div class="row">
+          <button type="button" class="btn primary" id="prep-btn" disabled data-i18n="make_prep">Create prep pack</button>
+          <button type="button" class="btn ghost" id="prep-download" hidden data-i18n="download">⬇ Download (.md)</button>
+          <button type="button" class="btn ghost" id="prep-print" hidden data-i18n="print">🖨 Print</button>
+        </div>
+      </div>
+      <div id="prep-progress" class="progress" role="status" aria-live="polite" hidden></div>
+      <article id="prep" class="card prep" hidden aria-labelledby="prep-title"></article>
+    </section>
+
+    <!-- ABOUT PANEL -->
+    <section role="tabpanel" id="panel-about" aria-labelledby="tab-about" class="panel" hidden>
+      <div class="card prose">
+        <h2>How Karaar Saathi works</h2>
+        <ol>
+          <li><strong>Private by default.</strong> Your file is read in memory. Aadhaar, PAN, phone numbers, emails and bank details are masked before any AI call. Nothing about your document is saved.</li>
+          <li><strong>Rules first, AI second.</strong> A curated Indian-law checklist (the "Fairness Benchmark") finds risky clauses and cites the exact law. Gemini then explains the document in plain language and can spot other unusual terms.</li>
+          <li><strong>Evidence-locked.</strong> Every warning quotes your document word for word. If the AI's quote doesn't match your document, the warning is thrown away. Every answer must cite clause numbers.</li>
+          <li><strong>Knows its limits.</strong> It won't predict court outcomes or tell you what to decide. If your document looks like a legal notice or summons, it points you to free legal aid straight away.</li>
+        </ol>
+        <p>Built with Gemini on Vertex AI, Cloud Vision (reading photos), Cloud Translation (11 Indian languages), Cloud Text-to-Speech (read aloud), Firestore (anonymous feedback), Cloud Logging and Cloud Run.</p>
+        <h3>Checks in the Fairness Benchmark</h3>
+        <div class="table-scroll">
+          <table class="facts" id="kb-table"><caption class="sr-only">All checks and their legal references</caption>
+            <thead><tr><th scope="col">Check</th><th scope="col">Applies to</th><th scope="col">Reference</th></tr></thead><tbody></tbody></table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p id="disclaimer" data-i18n="disclaimer">Karaar Saathi gives general legal information to help you understand a document. It is not legal advice and does not create a lawyer–client relationship. Laws differ by state and change; for decisions, speak to a qualified lawyer or free legal aid (NALSA 15100).</p>
+    </div>
+  </footer>
+</body>
+</html>

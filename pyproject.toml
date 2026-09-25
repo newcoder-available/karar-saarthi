@@ -1,0 +1,36 @@
+[project]
+name = "karaar-saathi"
+version = "1.1.0"
+description = "Plain-language legal document assistant for tenants, gig workers and first-job employees in India"
+requires-python = ">=3.11"
+readme = "README.md"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "SIM"]
+ignore = [
+  "B008",  # FastAPI dependency declarations (File(), Form()) are idiomatic default arguments
+  "S104",  # binding 0.0.0.0 is required inside the Cloud Run container
+]
+
+[tool.ruff.lint.per-file-ignores]
+"app/kb.py" = ["E501"]           # curated legal text is kept on one line per string for reviewability
+"app/assist.py" = ["E501"]       # bilingual user-facing copy
+"app/llm.py" = ["E501"]          # prompt templates are easier to review unwrapped
+"tests/*" = ["S101", "E501"]     # asserts and long fixture strings are expected in tests
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning", "ignore:.*ARC4.*"]
+
+[tool.coverage.run]
+source = ["app"]
+omit = ["app/__init__.py"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 90
