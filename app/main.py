@@ -304,6 +304,16 @@ async def http_error(_, exc: HTTPException):
 app.mount("/static", StaticFiles(directory=ROOT / "static"), name="static")
 
 
+@app.get("/styles.css", include_in_schema=False)
+def css():
+    return FileResponse(ROOT / "static" / "styles.css")
+
+
+@app.get("/app.js", include_in_schema=False)
+def js():
+    return FileResponse(ROOT / "static" / "app.js")
+
+
 @app.get("/", include_in_schema=False)
 def index():
     return FileResponse(ROOT / "static" / "index.html")
