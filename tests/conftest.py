@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-os.environ["KARAAR_OFFLINE"] = "1"  # tests never call real Google APIs unless mocked
+os.environ["KARAR_OFFLINE"] = "1"  # tests never call real Google APIs unless mocked
 os.environ["RATE_LIMIT_PER_MIN"] = "1000"
 
 SAMPLES = Path(__file__).resolve().parent.parent / "samples"

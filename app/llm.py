@@ -22,12 +22,12 @@ import logging
 import os
 import re
 
-log = logging.getLogger("karaar.llm")
+log = logging.getLogger("karar.llm")
 
 MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 _client = None
 
-SYSTEM = """You are Karaar Saathi, a plain-language legal information assistant for people in India
+SYSTEM = """You are Karar-Sarthi, a plain-language legal information assistant for people in India
 (tenants, gig/platform workers, first-job employees). You explain documents; you do not give legal advice.
 
 Rules you must always follow:
@@ -45,7 +45,7 @@ def available() -> bool:
         os.getenv("GOOGLE_API_KEY")
         or os.getenv("GEMINI_API_KEY")
         or os.getenv("GOOGLE_GENAI_USE_VERTEXAI", "").lower() in ("1", "true")
-    ) and os.getenv("KARAAR_OFFLINE", "").lower() not in ("1", "true")
+    ) and os.getenv("KARAR_OFFLINE", "").lower() not in ("1", "true")
 
 
 def _get_client():

@@ -601,6 +601,6 @@ LEGAL_AID = {
 }
 
 DISCLAIMER = {
-    "en": "Karaar Saathi gives general legal information to help you understand a document. It is not legal advice and does not create a lawyer–client relationship. Laws differ by state and change; for decisions, speak to a qualified lawyer or free legal aid (NALSA 15100).",
-    "hi": "करार साथी दस्तावेज़ समझने के लिए सामान्य क़ानूनी जानकारी देता है। यह क़ानूनी सलाह नहीं है। क़ानून हर राज्य में अलग हैं और बदलते रहते हैं; कोई फ़ैसला लेने से पहले योग्य वकील या मुफ़्त क़ानूनी सहायता (NALSA 15100) से बात करें।",
+    "en": "Karar-Sarthi gives general legal information to help you understand a document. It is not legal advice and does not create a lawyer–client relationship. Laws differ by state and change; for decisions, speak to a qualified lawyer or free legal aid (NALSA 15100).",
+    "hi": "करार सारथी दस्तावेज़ समझने के लिए सामान्य क़ानूनी जानकारी देता है। यह क़ानूनी सलाह नहीं है। क़ानून हर राज्य में अलग हैं और बदलते रहते हैं; कोई फ़ैसला लेने से पहले योग्य वकील या मुफ़्त क़ानूनी सहायता (NALSA 15100) से बात करें।",
 }

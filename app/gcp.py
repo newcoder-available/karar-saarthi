@@ -17,7 +17,7 @@ import os
 from datetime import UTC, datetime
 from functools import lru_cache
 
-log = logging.getLogger("karaar.gcp")
+log = logging.getLogger("karar.gcp")
 
 PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT") or os.getenv("GCP_PROJECT")
 
@@ -40,7 +40,7 @@ TTS_MAX_BYTES = 4800  # Text-to-Speech request limit is 5000 bytes
 
 
 def enabled() -> bool:
-    return bool(PROJECT) and os.getenv("KARAAR_OFFLINE", "").lower() not in ("1", "true")
+    return bool(PROJECT) and os.getenv("KARAR_OFFLINE", "").lower() not in ("1", "true")
 
 
 # ------------------------------------------------------------------ Cloud Logging

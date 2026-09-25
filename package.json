@@ -1,5 +1,5 @@
 {
-  "name": "karaar-saathi-a11y",
+  "name": "karar-sarthi-a11y",
   "private": true,
   "description": "Dev-only: axe-core for the automated WCAG audit in tests/test_accessibility.py",
   "devDependencies": {

@@ -1,6 +1,6 @@
-# Karaar Saathi · करार साथी
+# Karar-Sarthi · करार सारथी
 
-**Understand your agreement before you sign.** Karaar Saathi is a GenAI legal-information assistant for India's tenants, gig and platform workers, and first-job employees. It reads a rent agreement, a delivery-partner contract or an offer letter and does five things:
+**Understand your agreement before you sign.** Karar-Sarthi is a GenAI legal-information assistant for India's tenants, gig and platform workers, and first-job employees. It reads a rent agreement, a delivery-partner contract or an offer letter and does five things:
 
 1. Explains the document in plain words, in 11 Indian languages, with read-aloud.
 2. Flags risky, one-sided or unusual clauses, and each warning quotes the exact clause and a curated legal reference.
@@ -8,7 +8,7 @@
 4. Compares two versions, showing what got better, what got worse and what is still worth negotiating.
 5. Builds a **lawyer prep pack**: the situation, top concerns, questions to ask, documents to carry, options, a polite message asking for changes, and free legal-aid contacts.
 
-> Karaar Saathi provides legal **information**, not legal advice. It never predicts outcomes, and it sends users to free legal aid (NALSA 15100) when a document looks like a legal notice or summons.
+> Karar-Sarthi provides legal **information**, not legal advice. It never predicts outcomes, and it sends users to free legal aid (NALSA 15100) when a document looks like a legal notice or summons.
 
 ---
 
@@ -128,7 +128,7 @@ uvicorn app.main:app --reload --port 8080
 ```bash
 gcloud services enable run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com \
   aiplatform.googleapis.com vision.googleapis.com translate.googleapis.com texttospeech.googleapis.com firestore.googleapis.com
-gcloud artifacts repositories create karaar --repository-format=docker --location=asia-south1
+gcloud artifacts repositories create karar --repository-format=docker --location=asia-south1
 gcloud firestore databases create --location=asia-south1
 gcloud builds submit --config cloudbuild.yaml
 ```

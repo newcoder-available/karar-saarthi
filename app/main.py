@@ -1,4 +1,4 @@
-"""Karaar Saathi — FastAPI entrypoint.
+"""Karar-Sarthi — FastAPI entrypoint.
 
 Stateless by design: uploaded documents are processed in memory, PII is
 redacted before any AI call, and nothing about the document is persisted.
@@ -43,10 +43,10 @@ CSP = (
 )
 
 gcp.setup_logging()
-log = logging.getLogger("karaar")
+log = logging.getLogger("karar")
 
 app = FastAPI(
-    title="Karaar Saathi",
+    title="Karar-Sarthi",
     version="1.1.0",
     description="Plain-language legal document assistant for tenants, gig workers and first-job employees in India.",
 )

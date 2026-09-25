@@ -1,4 +1,4 @@
-/* Karaar Saathi front-end. No framework and no HTML-string injection of user or model data:
+/* Karar-Sarthi front-end. No framework and no HTML-string injection of user or model data:
    every dynamic string is inserted with textContent to rule out XSS. */
 "use strict";
 
@@ -25,7 +25,7 @@ const I18N = {
     term: "शर्त", fixed: "✓ B में ठीक हुआ", new_risk: "✗ B में नया", still: "! दोनों में बाक़ी",
     h_prep: "वकील प्रेप पैक", prep_help: "वकील या मुफ़्त क़ानूनी सहायता के पास ले जाने के लिए एक पेज: आपकी स्थिति, जोखिम वाले क्लॉज़, पूछने के सवाल, साथ ले जाने वाले काग़ज़, आपके विकल्प और बदलाव मांगने का मैसेज।",
     prep_empty: "पहले स्टेप 1 में दस्तावेज़ समझें।", make_prep: "प्रेप पैक बनाएं", download: "⬇ डाउनलोड (.md)", print: "🖨 प्रिंट",
-    disclaimer: "करार साथी दस्तावेज़ समझने के लिए सामान्य क़ानूनी जानकारी देता है। यह क़ानूनी सलाह नहीं है। क़ानून हर राज्य में अलग हैं और बदलते रहते हैं; फ़ैसला लेने से पहले योग्य वकील या मुफ़्त क़ानूनी सहायता (NALSA 15100) से बात करें।",
+    disclaimer: "करार सारथी दस्तावेज़ समझने के लिए सामान्य क़ानूनी जानकारी देता है। यह क़ानूनी सलाह नहीं है। क़ानून हर राज्य में अलग हैं और बदलते रहते हैं; फ़ैसला लेने से पहले योग्य वकील या मुफ़्त क़ानूनी सहायता (NALSA 15100) से बात करें।",
     working: "पढ़ रहे हैं और जांच रहे हैं…", evidence: "आपके दस्तावेज़ में", why: "क़ानूनी संदर्भ", ask_lawyer: "वकील से पूछें",
     negotiate: "क्या मांगें", clause: "क्लॉज़", urgent_title: "यह एक क़ानूनी नोटिस या समय-सीमा वाला दस्तावेज़ लगता है",
     urgent_body: "इसमें समय-सीमा हो सकती है। जल्द से जल्द वकील या मुफ़्त क़ानूनी सहायता से बात करें:",
@@ -362,7 +362,7 @@ function prepMarkdown(p) {
 
 function downloadPrep() {
   const blob = new Blob([prepMarkdown(state.prep)], { type: "text/markdown" });
-  const a = h("a", { href: URL.createObjectURL(blob), download: "karaar-saathi-prep-pack.md" });
+  const a = h("a", { href: URL.createObjectURL(blob), download: "karar-sarthi-prep-pack.md" });
   document.body.append(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }

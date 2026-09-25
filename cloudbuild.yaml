@@ -2,14 +2,14 @@
 # gcloud builds submit --config cloudbuild.yaml --substitutions=_REGION=asia-south1
 substitutions:
   _REGION: asia-south1
-  _SERVICE: karaar-saathi
-  _REPO: karaar
+  _SERVICE: karar-sarthi
+  _REPO: karar
 steps:
   - id: test
     name: python:3.11-slim
     entrypoint: bash
     args: ["-c", "pip install -q -r requirements-dev.txt && ruff check app tests && pytest --cov=app"]
-    env: ["KARAAR_OFFLINE=1"]
+    env: ["KARAR_OFFLINE=1"]
   - id: build
     name: gcr.io/cloud-builders/docker
     args: ["build", "-t", "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA", "."]

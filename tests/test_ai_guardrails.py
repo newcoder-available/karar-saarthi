@@ -143,9 +143,9 @@ def test_quote_matching_is_whitespace_and_punctuation_tolerant():
 
 def test_available_respects_offline_flag(monkeypatch):
     monkeypatch.setenv("GOOGLE_API_KEY", "x")
-    monkeypatch.setenv("KARAAR_OFFLINE", "1")
+    monkeypatch.setenv("KARAR_OFFLINE", "1")
     assert llm.available() is False
-    monkeypatch.setenv("KARAAR_OFFLINE", "0")
+    monkeypatch.setenv("KARAR_OFFLINE", "0")
     assert llm.available() is True
 
 
@@ -211,7 +211,7 @@ def test_gcp_translate_calls_client(monkeypatch):
             return Resp()
 
     monkeypatch.setattr(gcp, "PROJECT", "demo")
-    monkeypatch.setenv("KARAAR_OFFLINE", "0")
+    monkeypatch.setenv("KARAR_OFFLINE", "0")
     monkeypatch.setattr(gcp, "_translate_client", lambda: Client())
     assert gcp.translate(["hello"], "hi") == ["नमस्ते"]
 
@@ -221,7 +221,7 @@ def test_gcp_failures_are_soft(monkeypatch):
         raise RuntimeError("no credentials")
 
     monkeypatch.setattr(gcp, "PROJECT", "demo")
-    monkeypatch.setenv("KARAAR_OFFLINE", "0")
+    monkeypatch.setenv("KARAR_OFFLINE", "0")
     monkeypatch.setattr(gcp, "_translate_client", boom)
     monkeypatch.setattr(gcp, "_tts_client", boom)
     monkeypatch.setattr(gcp, "_vision_client", boom)
@@ -250,7 +250,7 @@ class _FakeModels:
 def _fake_client(monkeypatch, text):
     models = _FakeModels(text)
     monkeypatch.setenv("GOOGLE_API_KEY", "test")
-    monkeypatch.setenv("KARAAR_OFFLINE", "0")
+    monkeypatch.setenv("KARAR_OFFLINE", "0")
     monkeypatch.setattr(llm, "_get_client", lambda: type("C", (), {"models": models})())
     return models
 
