@@ -1,0 +1,19 @@
+# Netlify configuration for Karaar Saathi frontend
+
+[build]
+  # Publish directory containing static assets
+  publish = "static"
+
+# Redirect API calls to your deployed FastAPI backend
+# Replace https://your-backend-service.onrender.com with your actual backend URL (e.g., Cloud Run, Render, Railway)
+[[redirects]]
+  from = "/api/*"
+  to = "https://your-backend-service.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# Fallback for single page navigation
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
